@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = ".;order";
+
+package order;
+
+service Order {
+    rpc CreateOrder(CreateOrderRequest) returns (ServerResponse) {}
+    rpc GetOrder(FindOrderRequest) returns (OrderResponse) {}
+}
+
+message ServerResponse {
+    string result = 1;
+}
+
+message OrderResponse {
+    string id = 1;
+    string restaurant = 2;
+    string orderlines = 3;
+}
+
+message FindOrderRequest {
+    string id = 1;
+}
+
+message CreateOrderRequest {
+    string id = 1;
+    string restaurant = 2;
+}
